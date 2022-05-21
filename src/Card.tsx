@@ -1,6 +1,7 @@
-import React from "react";
+import React, { FC, HtmlHTMLAttributes } from "react";
 
-function Card(props) {
+type cardProps = HtmlHTMLAttributes<HTMLHtmlElement>;
+const Card: FC<cardProps> = (props) => {
   return <div className="shadow p-2">{props.children}</div>;
-}
+};
 export default Card;

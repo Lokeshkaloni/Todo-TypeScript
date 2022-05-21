@@ -1,10 +1,10 @@
-import React from "react";
+import React, { FC } from "react";
 import Button from "./Button";
 import Card from "./Card";
 
-function CreateToDo(props) {
+const CreateToDo: FC = (props: any) => {
   const [inputValue, updateInputValue] = React.useState("");
-  const onInputChange = (event) => {
+  const onInputChange = (event: any) => {
     updateInputValue(event.target.value);
   };
 
@@ -35,5 +35,5 @@ function CreateToDo(props) {
       </div>
     </Card>
   );
-}
+};
 export default CreateToDo;

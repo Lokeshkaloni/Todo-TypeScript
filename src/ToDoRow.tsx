@@ -1,6 +1,10 @@
-import React from "react";
+import React, { FC, HtmlHTMLAttributes } from "react";
+type todoRowProps = {
+  done: boolean;
+  onStatusChange: () => void;
+} & HtmlHTMLAttributes<HTMLHtmlElement>;
 
-function ToDoRow(props) {
+const ToDoRow: FC<todoRowProps> = (props) => {
   const onCheckBoxChange = () => {
     props.onStatusChange(props.children);
   };
@@ -12,5 +16,5 @@ function ToDoRow(props) {
       </h3>
     </div>
   );
-}
+};
 export default ToDoRow;

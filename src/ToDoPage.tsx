@@ -1,4 +1,4 @@
-import React from "react";
+import React, { FC } from "react";
 import CreateToDo from "./CreateToDo";
 import Button from "./Button";
 import Header from "./Header";
@@ -6,26 +6,26 @@ import Container1 from "./Container1";
 import Container2 from "./Container2";
 import ToDoRow from "./ToDoRow";
 
-function ToDoPage() {
+const ToDoPage: FC = () => {
   const [toDoFormVisible, updateToDoForm] = React.useState(false);
   const showToDoForm = () => updateToDoForm(true);
   const hideToDoForm = () => updateToDoForm(false);
-  const [toDoList, updateToDoList] = React.useState([]);
-  const [doneList, updateDoneList] = React.useState([]);
+  const [toDoList, updateToDoList] = React.useState<any[]>([]);
+  const [doneList, updateDoneList] = React.useState<any[]>([]);
 
-  const markAsDone = (todo) => {
+  const markAsDone = (todo: any) => {
     const newToDoList = toDoList.filter((t) => t !== todo);
     updateToDoList(newToDoList);
     updateDoneList([...doneList, todo]);
   };
 
-  const markNotDone = (todo) => {
+  const markNotDone = (todo: any) => {
     const newDoneList = doneList.filter((t) => t !== todo);
     updateDoneList(newDoneList);
     updateToDoList([...toDoList, todo]);
   };
 
-  const addToDo = (todo) => {
+  const addToDo = (todo: any) => {
     updateToDoList([...toDoList, todo]);
   };
   return (
@@ -59,6 +59,6 @@ function ToDoPage() {
       </div>
     </div>
   );
-}
+};
 
 export default ToDoPage;

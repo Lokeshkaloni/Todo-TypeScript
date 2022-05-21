@@ -1,6 +1,10 @@
-import React from "react";
+import React, { ButtonHTMLAttributes, FC } from "react";
+type buttonProps = {
+  theme?: "secondary";
+  border?: "full";
+} & ButtonHTMLAttributes<HTMLButtonElement>;
 
-function Button(props) {
+const Button: FC<buttonProps> = (props) => {
   let themeClass =
     "bg-yellow-400 text-white hover:bg-yellow-600 border-yellow-400";
   if (props.theme === "secondary") {
@@ -19,5 +23,5 @@ function Button(props) {
       {props.children}
     </button>
   );
-}
+};
 export default Button;

@@ -1,12 +1,12 @@
-import React from "react";
+import React, { FC } from "react";
 import ToDoPage from "./ToDoPage";
 
-function App() {
+const App: FC = () => {
   return (
     <div>
       <ToDoPage></ToDoPage>
     </div>
   );
-}
+};
 
 export default App;
