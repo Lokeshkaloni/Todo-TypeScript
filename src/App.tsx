@@ -1,7 +1,12 @@
-import { FC } from "react";
+import React from "react";
+import ToDoPage from "./ToDoPage";
 
-const App: FC = () => {
-  return <h1 className="bg-red-500">todo typescript</h1>;
-};
+function App() {
+  return (
+    <div>
+      <ToDoPage></ToDoPage>
+    </div>
+  );
+}
 
 export default App;
