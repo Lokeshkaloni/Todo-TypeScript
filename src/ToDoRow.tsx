@@ -1,7 +1,7 @@
 import React, { FC, HtmlHTMLAttributes } from "react";
 type todoRowProps = {
   done: boolean;
-  onStatusChange: () => void;
+  onStatusChange: (todo: any) => void;
 } & HtmlHTMLAttributes<HTMLHtmlElement>;
 
 const ToDoRow: FC<todoRowProps> = (props) => {

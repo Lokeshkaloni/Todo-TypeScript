@@ -2,7 +2,9 @@ import React, { FC } from "react";
 import Button from "./Button";
 import Card from "./Card";
 
-const CreateToDo: FC = (props: any) => {
+type createTodoType = { onCreate: (todo: any) => void; onClose: () => void };
+
+const CreateToDo: FC<createTodoType> = (props) => {
   const [inputValue, updateInputValue] = React.useState("");
   const onInputChange = (event: any) => {
     updateInputValue(event.target.value);
