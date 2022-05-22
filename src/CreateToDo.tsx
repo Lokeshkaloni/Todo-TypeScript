@@ -1,4 +1,6 @@
 import React, { FC } from "react";
+import { useDispatch } from "react-redux";
+import { TODO_INCOMPLETE } from "./Actions";
 import Button from "./Button";
 import Card from "./Card";
 
@@ -14,8 +16,12 @@ const CreateToDo: FC<createTodoType> = (props) => {
     props.onCreate(inputValue);
     updateInputValue("");
     props.onClose();
+    updateIncompTodo();
   };
-
+  const dispatch2 = useDispatch();
+  const updateIncompTodo = () => {
+    dispatch2({ type: TODO_INCOMPLETE });
+  };
   return (
     <Card>
       <div className="space-y-2">
