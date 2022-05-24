@@ -12,6 +12,7 @@ import {
   TODO_INCOMPLETE,
   TODO_INCOMPLETE2,
 } from "./Actions";
+import { v4 as uuidv4 } from "uuid";
 
 const ToDoPage: FC = () => {
   const [toDoFormVisible, updateToDoForm] = React.useState(false);
@@ -44,17 +45,17 @@ const ToDoPage: FC = () => {
   const updatecompTodo = () => {
     dispatch({ type: TODO_COMPLETE });
   };
-  const dispatch2 = useDispatch();
+
   const updateIncompTodo = () => {
-    dispatch2({ type: TODO_INCOMPLETE2 });
+    dispatch({ type: TODO_INCOMPLETE2 });
   };
-  const dispatch3 = useDispatch();
+
   const updatecompTodo2 = () => {
     dispatch({ type: TODO_COMPLETE2 });
   };
-  const dispatch4 = useDispatch();
+
   const updateIncompTodo2 = () => {
-    dispatch2({ type: TODO_INCOMPLETE });
+    dispatch({ type: TODO_INCOMPLETE });
   };
 
   return (
