@@ -30,7 +30,7 @@ const ToDoPage: FC = () => {
     updateIncompTodo();
   };
 
-  const markNotDone = (todo: any) => {
+  const markNotDone = (todo: todoRowProps) => {
     const newDoneList = doneList.filter((t) => t !== todo);
     updateDoneList(newDoneList);
     updateToDoList([...toDoList, todo]);
@@ -83,7 +83,7 @@ const ToDoPage: FC = () => {
 
         <Container2></Container2>
         {doneList.map((t) => (
-          <ToDoRow onStatusChange={markNotDone} done={true} key={t}>
+          <ToDoRow onStatusChange={markNotDone} done={true} key={uuidv4()}>
             {t}
           </ToDoRow>
         ))}
