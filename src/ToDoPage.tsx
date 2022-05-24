@@ -13,6 +13,7 @@ import {
   TODO_INCOMPLETE2,
 } from "./Actions";
 import { v4 as uuidv4 } from "uuid";
+import { todoRowProps } from "./TodoType";
 
 const ToDoPage: FC = () => {
   const [toDoFormVisible, updateToDoForm] = React.useState(false);
@@ -82,7 +83,7 @@ const ToDoPage: FC = () => {
 
         <Container2></Container2>
         {doneList.map((t) => (
-          <ToDoRow onStatusChange={markNotDone} done={true} key={uuidv4()}>
+          <ToDoRow onStatusChange={markNotDone} done={true} key={t}>
             {t}
           </ToDoRow>
         ))}
