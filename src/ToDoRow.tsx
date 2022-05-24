@@ -1,9 +1,5 @@
-import React, { FC, HtmlHTMLAttributes } from "react";
-
-type todoRowProps = {
-  done: boolean;
-  onStatusChange: (todo: any) => void;
-} & HtmlHTMLAttributes<HTMLHtmlElement>;
+import React, { FC } from "react";
+import { todoRowProps } from "./TodoType";
 
 const ToDoRow: FC<todoRowProps> = (props) => {
   const onCheckBoxChange = () => {

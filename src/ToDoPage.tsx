@@ -82,7 +82,7 @@ const ToDoPage: FC = () => {
 
         <Container2></Container2>
         {doneList.map((t) => (
-          <ToDoRow onStatusChange={markNotDone} done={true} key={t}>
+          <ToDoRow onStatusChange={markNotDone} done={true} key={uuidv4()}>
             {t}
           </ToDoRow>
         ))}
