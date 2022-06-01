@@ -12,8 +12,6 @@ import {
   TODO_INCOMPLETE,
   TODO_INCOMPLETE2,
 } from "./Actions";
-import { v4 as uuidv4 } from "uuid";
-import { todoRowProps } from "./TodoType";
 
 const ToDoPage: FC = () => {
   const [toDoFormVisible, updateToDoForm] = React.useState(false);
