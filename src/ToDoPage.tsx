@@ -21,7 +21,7 @@ const ToDoPage: FC = () => {
   const [doneList, updateDoneList] = React.useState<any[]>([]);
 
   const markAsDone = (todo: any) => {
-    const newToDoList = toDoList.filter((t) => t !== todo);
+    const newToDoList = toDoList.filter((t) => t.id !== todo.id);
     updateToDoList(newToDoList);
     updateDoneList([...doneList, todo]);
     updatecompTodo();
@@ -29,7 +29,7 @@ const ToDoPage: FC = () => {
   };
 
   const markNotDone = (todo: any) => {
-    const newDoneList = doneList.filter((t) => t !== todo);
+    const newDoneList = doneList.filter((t) => t.id !== todo.id);
     updateDoneList(newDoneList);
     updateToDoList([...toDoList, todo]);
     updatecompTodo2();
@@ -64,8 +64,8 @@ const ToDoPage: FC = () => {
         <h1 className="font-bold ml-4 text-2xl">Things to get done</h1>
         <Container1></Container1>
         {toDoList.map((t) => (
-          <ToDoRow onStatusChange={markAsDone} done={false} key={t}>
-            {t}
+          <ToDoRow onStatusChange={markAsDone} done={false} key={t.id}>
+            {t.title}
           </ToDoRow>
         ))}
 
@@ -81,8 +81,8 @@ const ToDoPage: FC = () => {
 
         <Container2></Container2>
         {doneList.map((t) => (
-          <ToDoRow onStatusChange={markNotDone} done={true} key={t}>
-            {t}
+          <ToDoRow onStatusChange={markNotDone} done={true} key={t.id}>
+            {t.title}
           </ToDoRow>
         ))}
       </div>

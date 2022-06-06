@@ -12,8 +12,11 @@ const CreateToDo: FC<createTodoType> = (props) => {
     updateInputValue(event.target.value);
   };
 
+  let initialId = 1;
   const saveToDo = () => {
-    props.onCreate(inputValue);
+    props.onCreate({ id: initialId, title: inputValue, done: false });
+    initialId++;
+    console.log(initialId, "this is the initial id");
     updateInputValue("");
     props.onClose();
     updateIncompTodo();
