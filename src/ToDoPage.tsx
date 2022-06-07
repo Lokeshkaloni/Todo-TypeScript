@@ -10,9 +10,6 @@ import {
 import { completeTodoSelector, inCompleteTodoSelector } from "./Selectors";
 import { state } from "./Store";
 import { todo } from "./TodoType";
-const completeMapper = (s: state) => ({ todos: completeTodoSelector(s) });
-const incompleteMapper = (s: state) => ({ todos: inCompleteTodoSelector(s) });
-const dispatchMapper = { onStatusChange: todoAddActionCreator };
 
 type todoPageProps = {
   todos: todo[];
@@ -42,6 +39,9 @@ const ToDoPage: FC<todoPageProps> = ({ todos, onStatusChange }) => {
 };
 
 export default ToDoPage;
+const completeMapper = (s: state) => ({ todos: completeTodoSelector(s) });
+const incompleteMapper = (s: state) => ({ todos: inCompleteTodoSelector(s) });
+const dispatchMapper = { onStatusChange: todoAddActionCreator };
 
 export const CompleteTodoComponent = connect(
   completeMapper,
