@@ -1,18 +1,16 @@
-import React, { FC } from "react";
+import React, { FC, useCallback } from "react";
 import { todoRowProps } from "./TodoType";
-import { v4 as uuidv4 } from "uuid";
 
-const ToDoRow: FC<todoRowProps> = (props) => {
-  const onCheckBoxChange = () => {
-    props.onStatusChange(props.children);
-  };
+const ToDoRow: FC<todoRowProps> = ({ todo, onStatusChange }) => {
+  const { done, title, id } = todo;
 
+  const handleChange = useCallback(() => {
+    onStatusChange(id, !done);
+  }, [id, done]);
   return (
     <div className="ml-4 flex items-center space-x-2">
-      <input checked={props.done} onChange={onCheckBoxChange} type="checkbox" />
-      <h3 className={"text-gray-600 " + (props.done && "line-through")}>
-        {props.children}
-      </h3>
+      <input checked={done} onChange={handleChange} type="checkbox" />
+      <h3 className={"text-gray-600 " + (done && "line-through")}>{title}</h3>
     </div>
   );
 };

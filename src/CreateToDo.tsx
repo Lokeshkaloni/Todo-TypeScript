@@ -1,23 +1,23 @@
-import React, { FC } from "react";
+import React, { ChangeEvent, FC } from "react";
 import { useDispatch } from "react-redux";
-import { TODO_INCOMPLETE } from "./Actions";
+import { TODO_ADD, TODO_INCOMPLETE } from "./Actions";
 import Button from "./Button";
 import Card from "./Card";
 
-type createTodoType = { onCreate: (todo: any) => void; onClose: () => void };
+type createTodoType = { onClose: () => void };
 
 const CreateToDo: FC<createTodoType> = (props) => {
   const [inputValue, updateInputValue] = React.useState("");
-  const onInputChange = (event: any) => {
+  const onInputChange = (event: ChangeEvent<HTMLInputElement>) => {
     updateInputValue(event.target.value);
   };
 
   let initialId = 1;
   const saveToDo = () => {
-    props.onCreate({ id: initialId, title: inputValue, done: false });
-    initialId++;
-    console.log(initialId, "this is the initial id");
-    updateInputValue("");
+    // props.onCreate({ id: initialId, title: inputValue, done: false });
+    // initialId++;
+    // console.log(initialId, "this is the initial id");
+
     props.onClose();
     updateIncompTodo();
   };
@@ -25,6 +25,11 @@ const CreateToDo: FC<createTodoType> = (props) => {
   const updateIncompTodo = () => {
     dispatch2({ type: TODO_INCOMPLETE });
   };
+  const handleSubmit = () => {
+    dispatch2({ type: TODO_ADD, payload: inputValue });
+    updateInputValue("");
+  };
+
   return (
     <Card>
       <div className="space-y-2">
@@ -36,12 +41,10 @@ const CreateToDo: FC<createTodoType> = (props) => {
           placeholder="enter todotodo"
         />
         <div className="space-x-2">
-          <Button disabled={!inputValue} onClick={saveToDo}>
+          <Button disabled={!inputValue} onClick={handleSubmit}>
             Save
           </Button>
-          <Button theme="secondary" onClick={props.onClose}>
-            cancel
-          </Button>
+          <Button theme="secondary">cancel</Button>
         </div>
       </div>
     </Card>
