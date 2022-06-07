@@ -19,13 +19,6 @@ const App: FC = () => {
       <h1 className="font-bold ml-4 text-2xl">Things to get done</h1>
       <Container1></Container1>
       <InCompleteTodoComponent />
-      <ToDoPage
-        todos={[
-          { id: 1, title: "ttyyt", done: false },
-          { id: 2, title: "ttgkkgt", done: false },
-          { id: 3, title: "ttyt", done: false },
-        ]}
-      />
       {!toDoFormVisible && (
         <Button onClick={showToDoForm} border="full">
           + Add a todo

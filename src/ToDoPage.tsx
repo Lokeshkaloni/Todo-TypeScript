@@ -11,6 +11,7 @@ type todoPageProps = {
 };
 
 const ToDoPage: FC<todoPageProps> = ({ todos }) => {
+  console.log("todos", todos);
   const dispatch = useDispatch();
   const updatecompTodo = () => {
     dispatch({ type: TODO_COMPLETE });
