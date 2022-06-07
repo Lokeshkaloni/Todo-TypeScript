@@ -11,7 +11,7 @@ export type state = { todos: todo[]; completed: number; incomplete: number };
 
 let newId = 1;
 const initialState: state = {
-  todos: [{ id: 1, title: "lokesh", done: false }],
+  todos: [],
   completed: 0,
   incomplete: 0,
 };
