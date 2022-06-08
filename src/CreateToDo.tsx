@@ -11,25 +11,18 @@ const CreateToDo: FC<createTodoType> = (props) => {
   const onInputChange = (event: ChangeEvent<HTMLInputElement>) => {
     updateInputValue(event.target.value);
   };
-
-  let initialId = 1;
-  const saveToDo = () => {
-    // props.onCreate({ id: initialId, title: inputValue, done: false });
-    // initialId++;
-    // console.log(initialId, "this is the initial id");
-
-    props.onClose();
-    updateIncompTodo();
-  };
-  const dispatch2 = useDispatch();
+  const dispatch = useDispatch();
   const updateIncompTodo = () => {
-    dispatch2({ type: TODO_INCOMPLETE });
+    dispatch({ type: TODO_INCOMPLETE });
   };
   const handleSubmit = () => {
-    dispatch2({ type: TODO_ADD, payload: inputValue });
+    dispatch({ type: TODO_ADD, payload: inputValue });
     updateInputValue("");
+    props.onClose();
   };
-
+  const handleClose = () => {
+    props.onClose();
+  };
   return (
     <Card>
       <div className="space-y-2">
@@ -44,7 +37,9 @@ const CreateToDo: FC<createTodoType> = (props) => {
           <Button disabled={!inputValue} onClick={handleSubmit}>
             Save
           </Button>
-          <Button theme="secondary">cancel</Button>
+          <Button theme="secondary" onClick={handleClose}>
+            cancel
+          </Button>
         </div>
       </div>
     </Card>

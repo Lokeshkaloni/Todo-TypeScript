@@ -28,10 +28,10 @@ export const reducer: Reducer<state> = (
       return { ...currentState, todos: [...currentState.todos, todo] };
     }
     case TODO_STATUS_CHANGE: {
-      const todoId = action.payload;
+      const { id, done } = action.payload;
       const newTodos = currentState.todos.map((t) => {
-        if (t.id === todoId) {
-          return { ...t, done: !t.done };
+        if (t.id === id) {
+          return { ...t, done };
         }
         return t;
       });

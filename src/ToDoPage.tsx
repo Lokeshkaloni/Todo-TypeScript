@@ -6,6 +6,7 @@ import {
   todoStatusActionCreator,
   TODO_COMPLETE,
   TODO_INCOMPLETE,
+  TODO_STATUS_CHANGE,
 } from "./Actions";
 import { completeTodoSelector, inCompleteTodoSelector } from "./Selectors";
 import { state } from "./Store";
@@ -13,10 +14,9 @@ import { todo } from "./TodoType";
 
 type todoPageProps = {
   todos: todo[];
-  onStatusChange: (id: number, done: boolean) => void;
 };
 
-const ToDoPage: FC<todoPageProps> = ({ todos, onStatusChange }) => {
+const ToDoPage: FC<todoPageProps> = ({ todos }) => {
   console.log("todos", todos);
   const dispatch = useDispatch();
   const updatecompTodo = () => {
@@ -26,13 +26,17 @@ const ToDoPage: FC<todoPageProps> = ({ todos, onStatusChange }) => {
     dispatch({ type: TODO_INCOMPLETE });
   };
   const handleStatusChange = (id: number, done: boolean) => {
-    dispatch(todoStatusActionCreator(id, done));
+    dispatch({ type: TODO_STATUS_CHANGE, payload: { id, done } });
   };
 
   return (
     <div className="space-y-4">
       {todos.map((t) => (
-        <ToDoRow onStatusChange={onStatusChange} todo={t} key={t.id}></ToDoRow>
+        <ToDoRow
+          onStatusChange={handleStatusChange}
+          todo={t}
+          key={t.id}
+        ></ToDoRow>
       ))}
     </div>
   );
@@ -41,7 +45,7 @@ const ToDoPage: FC<todoPageProps> = ({ todos, onStatusChange }) => {
 export default ToDoPage;
 const completeMapper = (s: state) => ({ todos: completeTodoSelector(s) });
 const incompleteMapper = (s: state) => ({ todos: inCompleteTodoSelector(s) });
-const dispatchMapper = { onStatusChange: todoAddActionCreator };
+const dispatchMapper = { onStatusChange: todoStatusActionCreator };
 
 export const CompleteTodoComponent = connect(
   completeMapper,
