@@ -1,4 +1,4 @@
-import React, { FC, HtmlHTMLAttributes } from "react";
+import { FC, HtmlHTMLAttributes } from "react";
 import CompleteDisplay from "./CompleteDisplay";
 import IncompleteDisplay from "./IncompleteDisplay";
 

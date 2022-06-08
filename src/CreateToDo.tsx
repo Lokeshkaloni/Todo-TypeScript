@@ -1,4 +1,4 @@
-import React, { ChangeEvent, FC } from "react";
+import React, { ChangeEvent, FC, memo } from "react";
 import { useDispatch } from "react-redux";
 import { TODO_ADD, TODO_INCOMPLETE } from "./Actions";
 import Button from "./Button";
@@ -15,14 +15,17 @@ const CreateToDo: FC<createTodoType> = (props) => {
   const updateIncompTodo = () => {
     dispatch({ type: TODO_INCOMPLETE });
   };
+
   const handleSubmit = () => {
     dispatch({ type: TODO_ADD, payload: inputValue });
     updateInputValue("");
     props.onClose();
+    updateIncompTodo();
   };
   const handleClose = () => {
     props.onClose();
   };
+
   return (
     <Card>
       <div className="space-y-2">
@@ -45,4 +48,4 @@ const CreateToDo: FC<createTodoType> = (props) => {
     </Card>
   );
 };
-export default CreateToDo;
+export default memo(CreateToDo);

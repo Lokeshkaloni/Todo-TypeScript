@@ -1,4 +1,4 @@
-import React, { FC, useCallback } from "react";
+import { FC, useCallback } from "react";
 import { todoRowProps } from "./TodoType";
 
 const ToDoRow: FC<todoRowProps> = ({ todo, onStatusChange }) => {

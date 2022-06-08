@@ -1,13 +1,7 @@
-import React, { FC } from "react";
+import { FC } from "react";
 import ToDoRow from "./ToDoRow";
 import { connect, useDispatch } from "react-redux";
-import {
-  todoAddActionCreator,
-  todoStatusActionCreator,
-  TODO_COMPLETE,
-  TODO_INCOMPLETE,
-  TODO_STATUS_CHANGE,
-} from "./Actions";
+import { todoStatusActionCreator, TODO_STATUS_CHANGE } from "./Actions";
 import { completeTodoSelector, inCompleteTodoSelector } from "./Selectors";
 import { state } from "./Store";
 import { todo } from "./TodoType";
@@ -17,14 +11,8 @@ type todoPageProps = {
 };
 
 const ToDoPage: FC<todoPageProps> = ({ todos }) => {
-  console.log("todos", todos);
   const dispatch = useDispatch();
-  const updatecompTodo = () => {
-    dispatch({ type: TODO_COMPLETE });
-  };
-  const updateIncompTodo2 = () => {
-    dispatch({ type: TODO_INCOMPLETE });
-  };
+
   const handleStatusChange = (id: number, done: boolean) => {
     dispatch({ type: TODO_STATUS_CHANGE, payload: { id, done } });
   };

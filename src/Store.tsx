@@ -2,7 +2,9 @@ import { createStore, Reducer } from "redux";
 import {
   TODO_ADD,
   TODO_COMPLETE,
+  TODO_COMPLETE2,
   TODO_INCOMPLETE,
+  TODO_INCOMPLETE2,
   TODO_STATUS_CHANGE,
 } from "./Actions";
 import { todo } from "./TodoType";
@@ -42,13 +44,23 @@ export const reducer: Reducer<state> = (
       return {
         ...currentState,
         completed: currentState.completed + 1,
-        incomplete: currentState.incomplete - 1,
       };
     }
     case TODO_INCOMPLETE: {
       return {
         ...currentState,
         incomplete: currentState.incomplete + 1,
+      };
+    }
+    case TODO_COMPLETE2: {
+      return {
+        ...currentState,
+        incomplete: currentState.incomplete - 1,
+      };
+    }
+    case TODO_INCOMPLETE2: {
+      return {
+        ...currentState,
         completed: currentState.completed - 1,
       };
     }
